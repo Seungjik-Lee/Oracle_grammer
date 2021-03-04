@@ -145,7 +145,7 @@ UNION ALL
 FROM empTbl ,empCTE
 WHERE EMPTBL.MANAGER=EMPCTE.EMPNAME)
 )
-SELECT distinct * FROM empCTE ORDER BY dept, empLevel;
+SELECT * FROM empCTE ORDER BY dept, empLevel;
 
 
 

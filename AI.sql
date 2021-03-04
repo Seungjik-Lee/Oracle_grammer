@@ -114,10 +114,38 @@ select cast(avg(maxsalary) as number(20,2)), sum(maxsalary) from aaa;
 
 
 
+--Oracl 내장함수
+select concat('이것이', 'oracle이다'), '이것이' || '' || '오라클이다' from dual;
+select concat('여기는', '305호다') from dual;
+
+select LPAD('이것이', 10, '##'), RPAD('이것이', 10, '##') from dual;
 
 
+--재귀적 CTE
+create table emptbl(emp NCHAR(3), MANAGER NCHAR(3), DEPARTMENT NCHAR(3));
 
+insert into emptbl values('나사장', '없음', '없음');
+insert into emptbl values('김재무', '나사장', '재무부');
+insert into emptbl values('김부장', '김재무', '재무부');
+insert into emptbl values('이부장', '김재무', '재무부');
+insert into emptbl values('우대리', '이부장', '재무부');
+insert into emptbl values('지사원', '이부장', '재무부');
+insert into emptbl values('이영업', '나사장', '영업부');
+insert into emptbl values('한과장', '이영업', '영업부');
+insert into emptbl values('최정보', '나사장', '정보부');
+insert into emptbl values('윤차장', '최정보', '정보부');
+insert into emptbl values('이주임', '윤차장', '정보부');
 
+WITH empCTE(empName, mgrName, dept, empLevel)
+AS
+(
+( SELECT emp, manager, department , 0 FROM empTbl WHERE manager = '없음' ) -- 상관이 없는 사람이 바로 사장
+UNION ALL
+(SELECT empTbl.emp, empTbl.manager, empTbl.department, empCTE.empLevel+1
+FROM empTbl ,empCTE
+WHERE EMPTBL.MANAGER=EMPCTE.EMPNAME)
+)
+SELECT distinct * FROM empCTE ORDER BY dept, empLevel;
 
 
 

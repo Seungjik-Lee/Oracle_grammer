@@ -46,3 +46,36 @@ SELECT (SUBSTR('삼성전자와 애플의 전자대결.', 1, 4) || 'VS' || SUBSTR('삼성전자�
 
 --(REVERSE 문자열의 순서를 거꾸로 만든다)
 SELECT REVERSE('Oracle') FROM DUAL;
+
+
+
+--Lpad, Rpad, Trim, Ltrim, Rtrim
+--
+--(LPAD or RPAD(문자열, 길이, 채울 문자열), 문자열을 길이 만큼 늘린 후 빈 곳을 채울 문자열로 채운다.)
+SELECT LPAD('이것이', 10, '##'), RPAD('이것이', 10, '##') FROM DUAL;
+
+SELECT LTRIM('$$$$$이것이', '$'), RTRIM('이것이$$$$$', '$') FROM DUAL;
+
+SELECT TRIM(' 이것이 '), TRIM(BOTH 'ㅋ' FROM 'ㅋㅋㅋ재밌어요.ㅋㅋㅋ') FROM DUAL;
+
+
+
+--Abs, Round, Ceil, Floor, Trunc
+--(ABS : 절대값, ROUND: 반올림, CEIL: 올림, FLOOR: 내림, TRUNC : 숫자를 기준으로 정수 위치까지 구하고 나머지는 버린다)
+--
+SELECT ABS(-100) FROM DUAL;
+
+SELECT CEIL(4.7), FLOOR(4.7), ROUND(4.7) FROM DUAL;
+
+SELECT ROUND(252,-2) FROM DUAL;
+
+SELECT TRUNC(12345.12345, 2), TRUNC(12345.12345, -2) FROM DUAL;
+
+
+
+--Mod, Power, Sqrt
+--
+--(MOD :나누고 남은 나머지 값, POWER : 거듭제곱 값, SQRT: 제곱근)
+SELECT MOD(157, 10) FROM DUAL;
+
+SELECT POWER(2,3), SQRT(9) FROM DUAL;

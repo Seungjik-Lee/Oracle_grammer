@@ -79,3 +79,26 @@ SELECT TRUNC(12345.12345, 2), TRUNC(12345.12345, -2) FROM DUAL;
 SELECT MOD(157, 10) FROM DUAL;
 
 SELECT POWER(2,3), SQRT(9) FROM DUAL;
+
+
+
+--Sysdate, Add_months
+--
+--(SYSDATE 현재의 날짜를 반환)
+SELECT SYSDATE FROM DUAL;
+
+--(ADD_MONTHS(날짜, 개월) : 날짜를 기준으로 개월을 더하거나 뺀 월을 반환)
+SELECT ADD_MONTHS('2020-01-01', 5), ADD_MONTHS(SYSDATE, -5) FROM DUAL;
+
+
+
+--Last_day, Next_day, Months_between
+--
+--(LAST_DAY 주어진 날짜의 달의 마지막 날짜를 구한다)
+SELECT LAST_DAY('2020-02-01') FROM DUAL;
+
+--(NEXT_DAY 주어진 날짜의 다음에 오는 요일의 날짜를 구한다)
+SELECT NEXT_DAY('2020-02-01', '월요일'), NEXT_DAY(SYSDATE, '일요일') FROM DUAL;
+
+--(MONTHS_BETWEEN 주어진 날짜 사이의 개월 수를 구한다)
+SELECT MONTHS_BETWEEN (SYSDATE, '1996-10-21') FROM DUAL;

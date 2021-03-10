@@ -214,9 +214,23 @@ END;
 
 
 
-
-
-
+--¹®Á¦
+DECLARE
+l_year NUMBER(5);
+s_year NUMBER(5);
+BEGIN
+l_year :=2002;
+SELECT MAX(YEAR)INTO s_year From lotto;
+while s_year >= (l_year)
+LOOP
+UPDATE lotto SET year = l_year
+WHERE
+(l_year = 2002 and SEQ <= (SELECT MAX(SEQ) FROM lotto WHERE year = l_year))
+or (SEQ <= (SELECT MAX(SEQ) FROM lotto WHERE year=l_year))
+and (SEQ <= (SELECT MAX(SEQ) FROM lotto WHERE year=(l_year-1)));
+l_year:=l_year+1;
+END LOOP;
+END;
 
 
 

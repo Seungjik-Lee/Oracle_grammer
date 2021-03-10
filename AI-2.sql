@@ -164,12 +164,53 @@ FROM buytbl B RIGHT OUTER JOIN usertbl U On B.userid = U.userid
 GROUP BY U.userid, U.username ORDER BY SUM(price*amount) DESC NULLS LAST;
 
 
+--303.p
+SET SERVEROUT ON;
+
+DECLARE
+iNum NUMBER(4);
+hap NUMBER(8);
+BEGIN
+iNum := 1;
+hap := 0;
+WHILE iNum <=1000
+LOOP
+IF MOD(iNum, 3) = 0 THEN
+iNum := iNum + 1;
+CONTINUE;
+END IF;
+IF MOD(iNum, 8) = 0 THEN
+iNum := iNum + 1;
+CONTINUE;
+END IF;
+IF iNum > 1001 THEN
+EXIT;
+END IF;
+hap := hap + iNum;
+END LOOP;
+DBMS_OUTPUT.PUT_LINE(hap);
+END;
 
 
-
-
-
-
+SET SERVEROUT ON;
+DECLARE
+iNum NUMBER(4);
+p_Num NUMBER(8);
+BEGIN
+p_Num := 0;
+for iNum in 1..1000
+LOOP
+CASE
+WHEN MOD(iNum, 3) = 0 THEN
+p_Num := iNum+p_Num;
+WHEN MOD(iNum, 8) = 0 THEN
+p_Num := iNum+p_Num;
+ELSE
+CONTINUE;
+END CASE;
+END LOOP;
+DBMS_OUTPUT.PUT_LINE(p_Num);
+END;
 
 
 

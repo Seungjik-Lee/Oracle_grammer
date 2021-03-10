@@ -69,6 +69,109 @@ insert into notnullex values ('103', '333');
 alter table notnullex drop constraint column2notnull;
 
 
+--294.P
+--
+set serveroutput on;
+
+DECLARE
+    var1 Number(5);
+BEGIN
+    var1 := 100;
+IF
+    var1 = 100 then
+    DBMS_OUTPUT.PUT_LINE('100입니다.');
+ELSE
+    DBMS_OUTPUT.PUT_LINE('100이 아닙니다.');
+END IF;
+END;
+
+
+
+--295.P
+--
+DECLARE
+hireDate DATE;
+curDate DATE;
+wDays NUMBER(5);
+BEGIN
+SELECT hire_date INTO hireDate
+FROM employees
+WHERE employee_id = 200;
+curDate := CURRENT_DATE();
+wDays := curDate - hireDate;
+IF(wDays/365) >= 5 THEN
+DBMS_OUTPUT.PUT_LINE('입사한지 ' || wDays || '일이나 지났습니다. 축하합니다!');
+ELSE
+DBMS_OUTPUT.PUT_LINE('입사한지 ' || wDays || '일밖에 안되었네요. 열심히 일하세요.');
+END IF;
+END;
+
+
+
+--296.P
+--
+DECLARE
+pNumber NUMBER(3); --점수
+credit char(1); --학점
+BEGIN
+pNumber := 77;
+IF pNumber >= 90 THEN
+credit := 'A';
+ELSIF pNumber >= 80 THEN
+credit := 'B';
+ELSIF pNumber >= 70 THEN
+credit := 'C';
+ELSIF pNumber >= 60 THEN
+credit := 'D';
+ELSE
+credit := 'F';
+END IF;
+DBMS_OUTPUT.PUT_LINE('취득점수 ==> ' || pNumber || ', 학점 ==>' || credit);
+END;
+
+
+DECLARE
+pNumber NUMBER(3); --점수
+credit char(1); --학점
+BEGIN
+pNumber := 77;
+CASE
+WHEN pNumber >= 90 THEN
+credit := 'A';
+WHEN pNumber >= 80 THEN
+credit := 'B';
+WHEN pNumber >= 70 THEN
+credit := 'C';
+WHEN pNumber >= 60 THEN
+credit := 'D';
+ELSE
+credit := 'F';
+END CASE;
+DBMS_OUTPUT.PUT_LINE('취득점수 ==> ' || pNumber || ', 학점 ==>' || credit);
+END;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

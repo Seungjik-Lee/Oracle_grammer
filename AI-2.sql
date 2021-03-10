@@ -151,6 +151,18 @@ DBMS_OUTPUT.PUT_LINE('√ÎµÊ¡°ºˆ ==> ' || pNumber || ', «–¡° ==>' || credit);
 END;
 
 
+--Ω«Ω¿ 8
+
+SELECT U.userid, U.username, SUM(price*amount) AS "√—±∏∏≈æ◊",
+CASE
+WHEN (SUM(price*amount) >= 1500) THEN '√÷øÏºˆ∞Ì∞¥'
+WHEN (SUM(price*amount) >= 1000) THEN 'øÏºˆ∞Ì∞¥'
+WHEN (SUM(price*amount) >= 1) THEN '¿œπ›∞Ì∞¥'
+ELSE '¿Ø∑…∞Ì∞¥'
+END AS "∞Ì∞¥µÓ±ﬁ"
+FROM buytbl B RIGHT OUTER JOIN usertbl U On B.userid = U.userid
+GROUP BY U.userid, U.username ORDER BY SUM(price*amount) DESC NULLS LAST;
+
 
 
 

@@ -46,9 +46,13 @@ public class OracleTest {
 			/*
 			 * EMP 테이블의 데이터 타입
 			 * 
-			 * EMPNO NOT NULL NUMBER(4) -- int ENAME VARCHAR2(10) -- String JOB
-			 * VARCHAR2(9) -- String MGR NUMBER(4) -- int HIREDATE DATE -- Date
-			 * SAL NUMBER(7,2) -- float/double COMM NUMBER(7,2) -- float/double
+			 * EMPNO NOT NULL NUMBER(4) -- int 
+			 * ENAME VARCHAR2(10) -- String 
+			 * JOB VARCHAR2(9) -- String
+			 * MGR NUMBER(4) -- int 
+			 * HIREDATE DATE -- Date
+			 * SAL NUMBER(7,2) -- float/double 
+			 * COMM NUMBER(7,2) -- float/double
 			 * DEPTNO NUMBER(2) -- int
 			 */
 			// System.out.println(rs.getRow());

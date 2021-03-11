@@ -14,19 +14,19 @@ public class CallProcedure1 {
 			int count =0;
 			BUYTBL[] buytbl = new BUYTBL[50];
 //			 Class.forName("oracle.jdbc.driver.OracleDriver");
-//			 Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","hr","123456");
+//			 Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","ai","1234");
 			conn = DBConnection.getConnection();
 			 // 프로시저 호출
-//			 CallableStatement cs = conn.prepareCall("begin SELECTALLCOLUMN_BUYTBL(?); end;");
-			 CallableStatement cs = conn.prepareCall("begin singlerow_BUYTBL(?,?); end;");
+			 CallableStatement cs = conn.prepareCall("begin SELECTALLCOLUMN_BUYTBL(?); end;");
+//			 CallableStatement cs = conn.prepareCall("begin singlerow_BUYTBL(?,?); end;");
 			 // 입력 파라메터
-			 cs.setInt(1, 30);
+//			 cs.setInt(1, 30);
 			 // 출력 파라메터
-			 cs.registerOutParameter(2, oracle.jdbc.OracleTypes.CURSOR);
+			 cs.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
 			 // 실행
 			 cs.execute();
 //			 ResultSet rs = (ResultSet)cs.getObject(1);
-			 rs = (ResultSet)cs.getObject(2);
+			 rs = (ResultSet)cs.getObject(1);
 			 
 			 while(rs.next()) {
 				 

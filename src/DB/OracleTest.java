@@ -9,19 +9,19 @@ public class OracleTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Connection conn = null; // DB¿¬°áµÈ »óÅÂ(¼¼¼Ç)À» ´ãÀº °´Ã¼
-		PreparedStatement pstm = null; // SQL ¹®À» ³ªÅ¸³»´Â °´Ã¼
-		ResultSet rs = null; // Äõ¸®¹®À» ³¯¸°°Í¿¡ ´ëÇÑ ¹İÈ¯°ªÀ» ´ãÀ» °´Ã¼
+		Connection conn = null; // DBì—°ê²°ëœ ìƒíƒœ(ì„¸ì…˜)ì„ ë‹´ì€ ê°ì²´
+		PreparedStatement pstm = null; // SQL ë¬¸ì„ ë‚˜íƒ€ë‚´ëŠ” ê°ì²´
+		ResultSet rs = null; // ì¿¼ë¦¬ë¬¸ì„ ë‚ ë¦°ê²ƒì— ëŒ€í•œ ë°˜í™˜ê°’ì„ ë‹´ì„ ê°ì²´
 
 		try {
-			// SQL ¹®ÀåÀ» ¸¸µé°í ¸¸¾à ¹®ÀåÀÌ ÁúÀÇ¾î(SELECT¹®)¶ó¸é
-			// ±× °á°ú¸¦ ´ãÀ» ResulSet °´Ã¼¸¦ ÁØºñÇÑ ÈÄ ½ÇÇà½ÃÅ²´Ù.
+			// SQL ë¬¸ì¥ì„ ë§Œë“¤ê³  ë§Œì•½ ë¬¸ì¥ì´ ì§ˆì˜ì–´(SELECTë¬¸)ë¼ë©´
+			// ê·¸ ê²°ê³¼ë¥¼ ë‹´ì„ ResulSet ê°ì²´ë¥¼ ì¤€ë¹„í•œ í›„ ì‹¤í–‰ì‹œí‚¨ë‹¤.
 			String quary = "SELECT * FROM EMP";
 
 			// String sqli = "insert into user_contacts"
 			// +"(user_no, user_name, user_phone, user_create_date)"
 			// +"values"
-			// +"(?, ?, ?, sysdate)"; // °ªÀÌ ¹«¾ùÀÌ µé¾î°¥Áö ¸ô¶ó ?¸¦ ¾²°í °ª¿¡¸¸ ?¸¦ ¾µ¼öÀÖ´Ù.
+			// +"(?, ?, ?, sysdate)"; // ê°’ì´ ë¬´ì—‡ì´ ë“¤ì–´ê°ˆì§€ ëª°ë¼ ?ë¥¼ ì“°ê³  ê°’ì—ë§Œ ?ë¥¼ ì“¸ìˆ˜ìˆë‹¤.
 			// pstmt.setString(1, name);
 			// pstmt.setString(2, phone);
 			// pstmt.setInt(3, no);
@@ -44,7 +44,7 @@ public class OracleTest {
 			// rs = pstm.executeUpdate();
 
 			/*
-			 * EMP Å×ÀÌºíÀÇ µ¥ÀÌÅÍ Å¸ÀÔ
+			 * EMP í…Œì´ë¸”ì˜ ë°ì´í„° íƒ€ì…
 			 * 
 			 * EMPNO NOT NULL NUMBER(4) -- int 
 			 * ENAME VARCHAR2(10) -- String 
@@ -61,11 +61,11 @@ public class OracleTest {
 
 			while (rs.next()) {
 				int empno = rs.getInt(1);
-				// int empno = rs.getInt("empno"); ¼ıÀÚ ´ë½Å ÄÃ·³ ÀÌ¸§À» Àû¾îµµ µÈ´Ù.
+				// int empno = rs.getInt("empno"); ìˆ«ì ëŒ€ì‹  ì»¬ëŸ¼ ì´ë¦„ì„ ì ì–´ë„ ëœë‹¤.
 				String ename = rs.getString(2);
 				String job = rs.getString(3);
 				int mgr = rs.getInt(4);
-				java.sql.Date hiredate = rs.getDate(5); // Date Å¸ÀÔ Ã³¸®
+				java.sql.Date hiredate = rs.getDate(5); // Date íƒ€ì… ì²˜ë¦¬
 				int sal = rs.getInt(6);
 				int comm = rs.getInt(7);
 				int deptno = rs.getInt(8);
@@ -76,11 +76,11 @@ public class OracleTest {
 			}
 
 		} catch (SQLException sqle) {
-			System.out.println("SELECT¹®¿¡¼­ ¿¹¿Ü ¹ß»ı");
+			System.out.println("SELECTë¬¸ì—ì„œ ì˜ˆì™¸ ë°œìƒ");
 			sqle.printStackTrace();
 
 		} finally {
-			// DB ¿¬°áÀ» Á¾·áÇÑ´Ù.
+			// DB ì—°ê²°ì„ ì¢…ë£Œí•œë‹¤.
 			try {
 				if (rs != null) {
 					rs.close();

@@ -16,12 +16,12 @@ public class CallProcedure4 {
 			int count =0;
 			BUYTBL[] buytbl = new BUYTBL[50];
 //			 Class.forName("oracle.jdbc.driver.OracleDriver");
-//			 Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","hr","123456");
+//			 Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","ai","1234");
 			conn = DBConnection.getConnection();
 			 // 프로시저 호출
 			 CallableStatement cs = conn.prepareCall("begin del_buytbl(?); end;");
 			 // 입력 파라메터
-			 cs.setInt(1, 29);
+			 cs.setInt(1, 19);
 			 int seq= cs.executeUpdate();
 //			 ResultSet rs = (ResultSet)cs.getObject(1);
 			 

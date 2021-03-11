@@ -16,7 +16,7 @@ public class CallProcedure2 {
 			int count =0;
 			BUYTBL[] buytbl = new BUYTBL[50];
 //			 Class.forName("oracle.jdbc.driver.OracleDriver");
-//			 Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","hr","123456");
+//			 Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","ai","1234");
 			conn = DBConnection.getConnection();
 			 // 프로시저 호출
 			 CallableStatement cs = conn.prepareCall("begin update_buytbl(?,?,?,?,?); end;");

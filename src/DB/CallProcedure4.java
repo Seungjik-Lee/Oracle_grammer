@@ -21,7 +21,7 @@ public class CallProcedure4 {
 			 // 프로시저 호출
 			 CallableStatement cs = conn.prepareCall("begin del_buytbl(?); end;");
 			 // 입력 파라메터
-			 cs.setInt(1, 19);
+			 cs.setInt(1, 30);
 			 int seq= cs.executeUpdate();
 //			 ResultSet rs = (ResultSet)cs.getObject(1);
 			 

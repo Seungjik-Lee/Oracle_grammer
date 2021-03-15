@@ -32,15 +32,6 @@ public class Procedure_del {
 			 int seq= cs.executeUpdate();
 //			 ResultSet rs = (ResultSet)cs.getObject(1);
 			 
-//			 if ( seq ==0 )
-//			 {
-//				 System.out.println(seq+"값");
-//			 }
-//			 else
-//			 {
-//				 System.out.println(seq+"값");
-//			 }
-			 
 //			 rs.close();
 			 cs.close();
 			 conn.close();
